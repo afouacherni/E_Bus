@@ -253,7 +253,7 @@ int main() {
             case 1: {
                 voyageur v;
                 int k;
-                printf("\n\t\t\t\tEntrez les détails du voyageur :\n");
+                printf("\n\t\t\t\tEntrez les dÃ©tails du voyageur :\n");
                 printf("\n\t\t\t\tEntrez le nom :\n ");
                 scanf("\n\t\t\t\t%s",&v.nom);
                 printf("\n\t\t\t\tEntrez la region :\n ");
@@ -278,7 +278,7 @@ int main() {
                 reservation r;
 
                 int a;
-                printf("\n\t\t\t\tEntrez les détails de la réservation :\n");
+                printf("\n\t\t\t\tEntrez les dÃ©tails de la rÃ©servation :\n");
                 printf("\n\t\t\t\tentrez le num_reser:\n");
                 scanf("\n\t\t\t\t%d",&r.num_reser);
                 printf("\n\t\t\t\tentrez le nbr_voy:\n");
@@ -313,7 +313,7 @@ int main() {
             case 3: {
                 bus b;
                 int s;
-                printf("\n\t\t\t\tEntrez les détails du bus :\n");
+                printf("\n\t\t\t\tEntrez les dÃ©tails du bus :\n");
                 printf("\n\t\t\t\tentrez le id:\n");
                 scanf("\n\t\t\t\t%d",&b.id);
                 printf("\n\t\t\t\tentrez la capacite:\n");
@@ -334,7 +334,7 @@ int main() {
             case 4: {
                 int cin;
                 voyageur v;
-                printf("\n\t\t\t\tEntrez le numéro de CIN du voyageur : ");
+                printf("\n\t\t\t\tEntrez le numÃ©ro de CIN du voyageur : ");
                 scanf("\n\t\t\t\t%d", &cin);
                  v = chercher_voyageur(filename3,cin);
 
@@ -356,7 +356,7 @@ int main() {
             }
             case 5: {
                 int num_reser;
-                printf("\n\t\t\t\tEntrez le numéro de réservation : ");
+                printf("\n\t\t\t\tEntrez le numÃ©ro de rÃ©servation : ");
                 scanf("\n\t\t\t\t%d", &num_reser);
                 reservation r = chercher_reservation(filename2, num_reser);
       if(r.num_reser!=-1)  {
@@ -382,7 +382,7 @@ int main() {
                 bus b = chercher_bus(filename1, id);
                       if(b.id!=-1)  {
 
-                    printf("\n\t\t\la capacité de cette bus  %d\n",b.capacite);
+                    printf("\n\t\t\la capacitÃ© de cette bus  %d\n",b.capacite);
 
                      printf("\n\t\t\ le matricule de cette bus: %s\n",b.matricule);
 
@@ -396,10 +396,10 @@ int main() {
             }
             case 7: {
                 int num_reser;
-                printf("Entrez le numéro de réservation à modifier : ");
+                printf("Entrez le numÃ©ro de rÃ©servation Ã  modifier : ");
                 scanf("%d", &num_reser);
                 reservation r = chercher_reservation(filename2, num_reser);
-                printf("Entrez les nouvelles informations de la réservation :\n");
+                printf("Entrez les nouvelles informations de la rÃ©servation :\n");
                 modifier_reservation(filename2, num_reser, r);
                   system("PAUSE");
                 system("CLS");
@@ -407,7 +407,7 @@ int main() {
             }
             case 8: {
                 int cin;
-                printf("\n\t\t\t\tEntrez le numéro de CIN du voyageur à modifier : ");
+                printf("\n\t\t\t\tEntrez le numÃ©ro de CIN du voyageur Ã  modifier : ");
                 scanf("\n\t\t\t\t%d", &cin);
                 voyageur v = chercher_voyageur(filename3, cin);
                 printf("\n\t\t\t\tEntrez les nouvelles informations du voyageur :\n");
@@ -418,7 +418,7 @@ int main() {
             }
             case 9: {
                 int num_reser;
-                printf("\n\t\t\t\tEntrez le numéro de réservation à supprimer : ");
+                printf("\n\t\t\t\tEntrez le numÃ©ro de rÃ©servation Ã  supprimer : ");
                 scanf("\n\t\t\t\t%d", &num_reser);
                 supprimer_reservation(filename2, num_reser);
                  system("PAUSE");
@@ -431,7 +431,7 @@ int main() {
                     break;
             }
             default:
-                printf("\n\t\t\t\tChoix invalide. Veuillez réessayer.\n");
+                printf("\n\t\t\t\tChoix invalide. Veuillez rÃ©essayer.\n");
 
                 break;
                 }}
