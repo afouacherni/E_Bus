@@ -133,80 +133,77 @@ reservation chercher_reservation(char *filename, int num_reser) {
          r.num_reser= -1;
     }
     return r;
-}
-    modifier_reservation( char * filename, int numreser, reservation r1 ){
-    int tr=0;
+}int modifier_reservation(char *filename, int numreser, reservation r1) {
+    int tr = 0;
     reservation r;
-    FILE * f=fopen(filename, "r");
-    FILE * f2=fopen("nouv.txt", "w");
-    if(f!=NULL && f2!=NULL)
-    {
-        while(fscanf(f,"%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour)!=EOF)
-        {
-            if(r.num_reser==numreser )
-            {
-                fprintf(f2,"%d %d %s %s %d %d %s %d %d %d\n", &r1.num_reser, &r1.nbr_voy, r1.pt_depart, r1.pt_arrive, &r1.b.id, &r1.b.capacite, r1.b.matricule, &r1.d_reser.mois, &r1.d_reser.annee, &r1.d_reser.jour);
-                tr=1;
-            }
-            else
-                fprintf(f2,"%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour);
+    FILE *f = fopen(filename, "r");
+    FILE *f2 = fopen("nouv.txt", "w");
 
+    if (f != NULL && f2 != NULL) {
+        while (fscanf(f, "%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour) != EOF) {
+            if (r.num_reser == numreser) {
+                fprintf(f2, "%d %d %s %s %d %d %s %d %d %d\n", r1.num_reser, r1.nbr_voy, r1.pt_depart, r1.pt_arrive, r1.b.id, r1.b.capacite, r1.b.matricule, r1.d_reser.mois, r1.d_reser.annee, r1.d_reser.jour);
+                tr = 1;
+            } else {
+                fprintf(f2, "%d %d %s %s %d %d %s %d %d %d\n", r.num_reser, r.nbr_voy, r.pt_depart, r.pt_arrive, r.b.id, r.b.capacite, r.b.matricule, r.d_reser.mois, r.d_reser.annee, r.d_reser.jour);
+            }
         }
     }
+
     fclose(f);
     fclose(f2);
     remove(filename);
     rename("nouv.txt", filename);
     return tr;
-
 }
-modifier_voyageur (char * filename, int cin, voyageur v1){
-    int tr=0;
+
+int modifier_voyageur(char *filename, int cin, voyageur v1) {
+    int tr = 0;
     voyageur v;
-    FILE * f=fopen(filename, "r");
-    FILE * f2=fopen("nouv.txt", "w");
-    if(f!=NULL && f2!=NULL)
-    {
-        while(fscanf(f,"%d %d %s %s\n", &v.cin, &v.num_tel, v.nom, v.region)!=EOF)
-        {
-            if(v.cin==cin )
-            {
-                fprintf(f2,"%d %d %s %s\n", &v1.cin, &v1.num_tel, v1.nom, v1.region);
-                tr=1;
+    FILE *f = fopen(filename, "r");
+    FILE *f2 = fopen("nouv.txt", "w");
+
+    if (f != NULL && f2 != NULL) {
+        while (fscanf(f, "%d %d %s %s\n", &v.cin, &v.num_tel, v.nom, v.region) != EOF) {
+            if (v.cin == cin) {
+                fprintf(f2, "%d %d %s %s\n", v1.cin, v1.num_tel, v1.nom, v1.region);
+                tr = 1;
+            } else {
+                fprintf(f2, "%d %d %s %s\n", v.cin, v.num_tel, v.nom, v.region);
             }
-            else
-                fprintf(f2,"%d %d %s %s\n", &v.cin, &v.num_tel, v.nom, v.region);
-
         }
     }
+
     fclose(f);
     fclose(f2);
     remove(filename);
     rename("nouv.txt", filename);
     return tr;
-
 }
-supprimer_reservation(char * filename, int num_reser){
-     int tr=0;
+
+int supprimer_reservation(char *filename, int num_reser) {
+    int tr = 0;
     reservation r;
-    FILE * f=fopen(filename, "r");
-    FILE * f2=fopen("nouv.txt", "w");
-    if(f!=NULL && f2!=NULL)
-    {
-        while(fscanf(f,"%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour)!=EOF)
-        {
-            if(r.num_reser== num_reser)
-                tr=1;
-            else
-                fprintf(f2,"%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour);
+    FILE *f = fopen(filename, "r");
+    FILE *f2 = fopen("nouv.txt", "w");
+
+    if (f != NULL && f2 != NULL) {
+        while (fscanf(f, "%d %d %s %s %d %d %s %d %d %d\n", &r.num_reser, &r.nbr_voy, r.pt_depart, r.pt_arrive, &r.b.id, &r.b.capacite, r.b.matricule, &r.d_reser.mois, &r.d_reser.annee, &r.d_reser.jour) != EOF) {
+            if (r.num_reser == num_reser) {
+                tr = 1;
+            } else {
+                fprintf(f2, "%d %d %s %s %d %d %s %d %d %d\n", r.num_reser, r.nbr_voy, r.pt_depart, r.pt_arrive, r.b.id, r.b.capacite, r.b.matricule, r.d_reser.mois, r.d_reser.annee, r.d_reser.jour);
+            }
         }
     }
+
     fclose(f);
     fclose(f2);
     remove(filename);
     rename("nouv.txt", filename);
     return tr;
 }
+
 
 int main() {
    char filename1[] = "bus.txt";
@@ -253,7 +250,7 @@ int main() {
             case 1: {
                 voyageur v;
                 int k;
-                printf("\n\t\t\t\tEntrez les détails du voyageur :\n");
+                printf("\n\t\t\t\tEntrez les d tails du voyageur :\n");
                 printf("\n\t\t\t\tEntrez le nom :\n ");
                 scanf("\n\t\t\t\t%s",&v.nom);
                 printf("\n\t\t\t\tEntrez la region :\n ");
@@ -278,7 +275,7 @@ int main() {
                 reservation r;
 
                 int a;
-                printf("\n\t\t\t\tEntrez les détails de la réservation :\n");
+                printf("\n\t\t\t\tEntrez les d tails de la r servation :\n");
                 printf("\n\t\t\t\tentrez le num_reser:\n");
                 scanf("\n\t\t\t\t%d",&r.num_reser);
                 printf("\n\t\t\t\tentrez le nbr_voy:\n");
@@ -313,7 +310,7 @@ int main() {
             case 3: {
                 bus b;
                 int s;
-                printf("\n\t\t\t\tEntrez les détails du bus :\n");
+                printf("\n\t\t\t\tEntrez les d tails du bus :\n");
                 printf("\n\t\t\t\tentrez le id:\n");
                 scanf("\n\t\t\t\t%d",&b.id);
                 printf("\n\t\t\t\tentrez la capacite:\n");
@@ -334,7 +331,7 @@ int main() {
             case 4: {
                 int cin;
                 voyageur v;
-                printf("\n\t\t\t\tEntrez le numéro de CIN du voyageur : ");
+                printf("\n\t\t\t\tEntrez le num ro de CIN du voyageur : ");
                 scanf("\n\t\t\t\t%d", &cin);
                  v = chercher_voyageur(filename3,cin);
 
@@ -356,7 +353,7 @@ int main() {
             }
             case 5: {
                 int num_reser;
-                printf("\n\t\t\t\tEntrez le numéro de réservation : ");
+                printf("\n\t\t\t\tEntrez le num ro de r servation : ");
                 scanf("\n\t\t\t\t%d", &num_reser);
                 reservation r = chercher_reservation(filename2, num_reser);
       if(r.num_reser!=-1)  {
@@ -382,7 +379,7 @@ int main() {
                 bus b = chercher_bus(filename1, id);
                       if(b.id!=-1)  {
 
-                    printf("\n\t\t\la capacité de cette bus  %d\n",b.capacite);
+                    printf("\n\t\t\la capacit  de cette bus  %d\n",b.capacite);
 
                      printf("\n\t\t\ le matricule de cette bus: %s\n",b.matricule);
 
@@ -394,44 +391,119 @@ int main() {
                 system("CLS");
                 break;
             }
-            case 7: {
-                int num_reser;
-                printf("Entrez le numéro de réservation à modifier : ");
-                scanf("%d", &num_reser);
-                reservation r = chercher_reservation(filename2, num_reser);
-                printf("Entrez les nouvelles informations de la réservation :\n");
-                modifier_reservation(filename2, num_reser, r);
-                  system("PAUSE");
-                system("CLS");
-                break;
-            }
-            case 8: {
-                int cin;
-                printf("\n\t\t\t\tEntrez le numéro de CIN du voyageur à modifier : ");
-                scanf("\n\t\t\t\t%d", &cin);
-                voyageur v = chercher_voyageur(filename3, cin);
-                printf("\n\t\t\t\tEntrez les nouvelles informations du voyageur :\n");
-                modifier_voyageur(filename3, cin, v);
-                  system("PAUSE");
-                system("CLS");
-                break;
-            }
-            case 9: {
-                int num_reser;
-                printf("\n\t\t\t\tEntrez le numéro de réservation à supprimer : ");
-                scanf("\n\t\t\t\t%d", &num_reser);
-                supprimer_reservation(filename2, num_reser);
-                 system("PAUSE");
-                system("CLS");
-                break;
-            }
+case 7: {
+    int num_reser;
+    printf("Entrez le num ro de r servation   modifier : ");
+    scanf("%d", &num_reser);
+
+    // Chercher la r servation
+    reservation r = chercher_reservation(filename2, num_reser);
+
+    // Si la r servation est trouv e, permettre la modification
+    if (r.num_reser != -1) {
+        printf("Entrez les nouvelles informations de la r servation :\n");
+
+        printf("Nouveau nombre de voyageurs : ");
+        scanf("%d", &r.nbr_voy);
+
+        printf("Nouveau point de d part : ");
+        scanf("%s", r.pt_depart);
+
+        printf("Nouveau point d'arriv e : ");
+        scanf("%s", r.pt_arrive);
+
+        printf("Nouvel ID du bus : ");
+        scanf("%d", &r.b.id);
+
+        printf("Nouvelle capacit  du bus : ");
+        scanf("%d", &r.b.capacite);
+
+        printf("Nouvelle matricule du bus : ");
+        scanf("%s", r.b.matricule);
+
+        printf("Nouveau mois de r servation : ");
+        scanf("%d", &r.d_reser.mois);
+
+        printf("Nouvelle ann e de r servation : ");
+        scanf("%d", &r.d_reser.annee);
+
+        printf("Nouveau jour de r servation : ");
+        scanf("%d", &r.d_reser.jour);
+
+        // Modifier la r servation dans le fichier
+        if (modifier_reservation(filename2, num_reser, r)) {
+            printf("La r servation a  t  modifi e avec succ s.\n");
+        } else {
+            printf(" chec de la modification de la r servation.\n");
+        }
+    } else {
+        printf("R servation non trouv e avec le num ro : %d\n", num_reser);
+    }
+
+    system("PAUSE");
+    system("CLS");
+    break;
+}
+case 8: {
+    int cin;
+    printf("Entrez le num ro de CIN du voyageur   modifier : ");
+    scanf("%d", &cin);
+
+    // Chercher le voyageur
+    voyageur v = chercher_voyageur(filename3, cin);
+
+    // Si le voyageur est trouv , permettre la modification
+    if (v.cin != -1) {
+        printf("Entrez les nouvelles informations du voyageur :\n");
+
+        printf("Nouveau nom du voyageur : ");
+        scanf("%s", v.nom);
+
+        printf("Nouvelle r gion du voyageur : ");
+        scanf("%s", v.region);
+
+        printf("Nouveau num ro de t l phone du voyageur : ");
+        scanf("%d", &v.num_tel);
+
+        // Modifier le voyageur dans le fichier
+        if (modifier_voyageur(filename3, cin, v)) {
+            printf("Le voyageur a  t  modifi  avec succ s.\n");
+        } else {
+            printf(" chec de la modification du voyageur.\n");
+        }
+    } else {
+        printf("Voyageur non trouv  avec le num ro de CIN : %d\n", cin);
+    }
+
+    system("PAUSE");
+    system("CLS");
+    break;
+}
+
+          case 9: {
+    int num_reser;
+    printf("Entrez le num ro de r servation   supprimer : ");
+    scanf("%d", &num_reser);
+
+    // Supprimer la r servation dans le fichier
+    if (supprimer_reservation(filename2, num_reser)) {
+        printf("La r servation a  t  supprim e avec succ s.\n");
+    } else {
+        printf(" chec de la suppression de la r servation.\n");
+    }
+
+    system("PAUSE");
+    system("CLS");
+    break;
+}
+
             case 10:{
                     exit_system();
                     exit(0);
                     break;
             }
             default:
-                printf("\n\t\t\t\tChoix invalide. Veuillez réessayer.\n");
+                printf("\n\t\t\t\tChoix invalide. Veuillez r essayer.\n");
 
                 break;
                 }}
