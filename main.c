@@ -214,23 +214,13 @@ int main() {
     int choice;
    system("CLS");
         if(currentwindow==main_menu){
- printf("\n\t\t\t\t\tBienvenue dans E-Bus Travel \n\t\t\t\t\vous etes dans la bonne place merci pour votre confiance\n");
+ printf("\n\t\t\t\t\tBienvenue dans E-Bus Travel \n\t\t\t\t\merci pour votre confiance\n");
 
             currentwindow=login_system;
                    system("PAUSE");
                     system("CLS");
         }
-
-
-
-
-
-
-
-
            else if(currentwindow==login_system){
-
-
         printf("\n\t\t\t\t\tMenu:\n");
         printf("\n\t\t\t\t1. Ajouter un voyageur\n");
         printf("\n\t\t\t\t2. Ajouter une reservation\n");
@@ -242,15 +232,13 @@ int main() {
         printf("\n\t\t\t\t8. Modifier un voyageur\n");
         printf("\n\t\t\t\t9. Supprimer une reservation\n");
         printf("\n\t\t\t\t10. Quitter\n");
-
         printf("\n\t\t\t\tChoix: ");
         scanf("%d", &choice);
-
         switch (choice) {
             case 1: {
                 voyageur v;
                 int k;
-                printf("\n\t\t\t\tEntrez les d tails du voyageur :\n");
+                printf("\n\t\t\t\tEntrez les details du voyageur :\n");
                 printf("\n\t\t\t\tEntrez le nom :\n ");
                 scanf("\n\t\t\t\t%s",&v.nom);
                 printf("\n\t\t\t\tEntrez la region :\n ");
@@ -275,7 +263,7 @@ int main() {
                 reservation r;
 
                 int a;
-                printf("\n\t\t\t\tEntrez les d tails de la r servation :\n");
+                printf("\n\t\t\t\tEntrez les details de la reservation :\n");
                 printf("\n\t\t\t\tentrez le num_reser:\n");
                 scanf("\n\t\t\t\t%d",&r.num_reser);
                 printf("\n\t\t\t\tentrez le nbr_voy:\n");
@@ -310,7 +298,7 @@ int main() {
             case 3: {
                 bus b;
                 int s;
-                printf("\n\t\t\t\tEntrez les d tails du bus :\n");
+                printf("\n\t\t\t\tEntrez les details du bus :\n");
                 printf("\n\t\t\t\tentrez le id:\n");
                 scanf("\n\t\t\t\t%d",&b.id);
                 printf("\n\t\t\t\tentrez la capacite:\n");
@@ -331,7 +319,7 @@ int main() {
             case 4: {
                 int cin;
                 voyageur v;
-                printf("\n\t\t\t\tEntrez le num ro de CIN du voyageur : ");
+                printf("\n\t\t\t\tEntrez le numero de CIN du voyageur : ");
                 scanf("\n\t\t\t\t%d", &cin);
                  v = chercher_voyageur(filename3,cin);
 
@@ -353,7 +341,7 @@ int main() {
             }
             case 5: {
                 int num_reser;
-                printf("\n\t\t\t\tEntrez le num ro de r servation : ");
+                printf("\n\t\t\t\tEntrez le numero de reservation : ");
                 scanf("\n\t\t\t\t%d", &num_reser);
                 reservation r = chercher_reservation(filename2, num_reser);
       if(r.num_reser!=-1)  {
@@ -393,20 +381,20 @@ int main() {
             }
 case 7: {
     int num_reser;
-    printf("Entrez le num ro de r servation   modifier : ");
+    printf("Entrez le numero de reservation a modifier : ");
     scanf("%d", &num_reser);
 
-    // Chercher la r servation
+    // Chercher la reservation
     reservation r = chercher_reservation(filename2, num_reser);
 
-    // Si la r servation est trouv e, permettre la modification
+    // Si la reservation est trouvee, permettre la modification
     if (r.num_reser != -1) {
-        printf("Entrez les nouvelles informations de la r servation :\n");
+        printf("Entrez les nouvelles informations de la reservation :\n");
 
         printf("Nouveau nombre de voyageurs : ");
         scanf("%d", &r.nbr_voy);
 
-        printf("Nouveau point de d part : ");
+        printf("Nouveau point de depart : ");
         scanf("%s", r.pt_depart);
 
         printf("Nouveau point d'arriv e : ");
@@ -415,29 +403,29 @@ case 7: {
         printf("Nouvel ID du bus : ");
         scanf("%d", &r.b.id);
 
-        printf("Nouvelle capacit  du bus : ");
+        printf("Nouvelle capacite du bus : ");
         scanf("%d", &r.b.capacite);
 
         printf("Nouvelle matricule du bus : ");
         scanf("%s", r.b.matricule);
 
-        printf("Nouveau mois de r servation : ");
+        printf("Nouveau mois de reservation : ");
         scanf("%d", &r.d_reser.mois);
 
-        printf("Nouvelle ann e de r servation : ");
+        printf("Nouvelle ann e de reservation : ");
         scanf("%d", &r.d_reser.annee);
 
-        printf("Nouveau jour de r servation : ");
+        printf("Nouveau jour de reservation : ");
         scanf("%d", &r.d_reser.jour);
 
-        // Modifier la r servation dans le fichier
+        // Modifier la reservation dans le fichier
         if (modifier_reservation(filename2, num_reser, r)) {
-            printf("La r servation a  t  modifi e avec succ s.\n");
+            printf("La reservation a ete modifiee avec succes.\n");
         } else {
-            printf(" chec de la modification de la r servation.\n");
+            printf(" echec de la modification de la reservation.\n");
         }
     } else {
-        printf("R servation non trouv e avec le num ro : %d\n", num_reser);
+        printf("Reservation non trouvee avec le numero : %d\n", num_reser);
     }
 
     system("PAUSE");
@@ -446,33 +434,33 @@ case 7: {
 }
 case 8: {
     int cin;
-    printf("Entrez le num ro de CIN du voyageur   modifier : ");
+    printf("Entrez le numero de CIN du voyageur a modifier : ");
     scanf("%d", &cin);
 
     // Chercher le voyageur
     voyageur v = chercher_voyageur(filename3, cin);
 
-    // Si le voyageur est trouv , permettre la modification
+    // Si le voyageur a ete trouve, permettre la modification
     if (v.cin != -1) {
         printf("Entrez les nouvelles informations du voyageur :\n");
 
         printf("Nouveau nom du voyageur : ");
         scanf("%s", v.nom);
 
-        printf("Nouvelle r gion du voyageur : ");
+        printf("Nouvelle region du voyageur : ");
         scanf("%s", v.region);
 
-        printf("Nouveau num ro de t l phone du voyageur : ");
+        printf("Nouveau numero de telephone du voyageur : ");
         scanf("%d", &v.num_tel);
 
         // Modifier le voyageur dans le fichier
         if (modifier_voyageur(filename3, cin, v)) {
-            printf("Le voyageur a  t  modifi  avec succ s.\n");
+            printf("Le voyageur a ete modifie avec succes.\n");
         } else {
-            printf(" chec de la modification du voyageur.\n");
+            printf(" echec de la modification du voyageur.\n");
         }
     } else {
-        printf("Voyageur non trouv  avec le num ro de CIN : %d\n", cin);
+        printf("Voyageur non trouve avec le num ro de CIN : %d\n", cin);
     }
 
     system("PAUSE");
@@ -482,14 +470,14 @@ case 8: {
 
           case 9: {
     int num_reser;
-    printf("Entrez le num ro de r servation   supprimer : ");
+    printf("Entrez le numero de reservation a supprimer : ");
     scanf("%d", &num_reser);
 
-    // Supprimer la r servation dans le fichier
+    // Supprimer la reservation dans le fichier
     if (supprimer_reservation(filename2, num_reser)) {
-        printf("La r servation a  t  supprim e avec succ s.\n");
+        printf("La reservation a ete supprimer avec succes.\n");
     } else {
-        printf(" chec de la suppression de la r servation.\n");
+        printf("echec de la suppression de la reservation.\n");
     }
 
     system("PAUSE");
@@ -503,7 +491,7 @@ case 8: {
                     break;
             }
             default:
-                printf("\n\t\t\t\tChoix invalide. Veuillez r essayer.\n");
+                printf("\n\t\t\t\tChoix invalide. Veuillez reessayer.\n");
 
                 break;
                 }}
