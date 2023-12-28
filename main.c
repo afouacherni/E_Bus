@@ -52,6 +52,11 @@ int ajouter_voyageur(char *filename, voyageur v) {
 }
 
 int ajouter_reservation(char *filename, reservation r) {
+ if( r.d_reser.mois > 12 || r.d_reser.mois < 1  || r.d_reser.jour < 1 || r.d_reser.jour >30 ){
+    printf("date de reservation est invalide");
+    return -1;
+    }
+    else {
     FILE *f = fopen(filename, "a");
     if (f != NULL) {
         fprintf(f, "%d %d %s %s %d %d %s %d %d %d\n", r.num_reser, r.nbr_voy, r.pt_depart, r.pt_arrive, r.b.id, r.b.capacite, r.b.matricule, r.d_reser.mois, r.d_reser.annee, r.d_reser.jour);
@@ -60,7 +65,12 @@ int ajouter_reservation(char *filename, reservation r) {
     } else {
         return 0;
     }
+    }
+
 }
+
+
+    
 
 
 int ajouter_bus(char *filename, bus b) {
@@ -134,7 +144,12 @@ reservation chercher_reservation(char *filename, int num_reser) {
     }
     return r;
 }int modifier_reservation(char *filename, int numreser, reservation r1) {
-    int tr = 0;
+ if( r1.d_reser.mois > 12 || r1.d_reser.mois < 1  || r1.d_reser.jour < 1 || r1.d_reser.jour >30 ){
+     printf("la date de reservation est invalide");
+    return -1;
+    }
+    else {
+   int tr = 0;
     reservation r;
     FILE *f = fopen(filename, "r");
     FILE *f2 = fopen("nouv.txt", "w");
@@ -155,9 +170,10 @@ reservation chercher_reservation(char *filename, int num_reser) {
     remove(filename);
     rename("nouv.txt", filename);
     return tr;
+    }
 }
 
-int modifier_voyageur(char *filename, int cin, voyageur v1) {
+    int modifier_voyageur(char *filename, int cin, voyageur v1) {
     int tr = 0;
     voyageur v;
     FILE *f = fopen(filename, "r");
