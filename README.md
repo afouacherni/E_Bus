@@ -19,14 +19,13 @@
 ## 3/concernant la réservation:
   ### a/fonction ajout_réservation:
       elle consiste à remplir un fichier appelé filname2 avec les détails de la réservation : son numéro de réservation,le nombbre de 
-      voyageur ,le point de depart et celui de l'arrivé ,le id de bus , la matricule ,la capacité , le jour ,le mois et l'année de 
-      réservation et elle retourne succés si l'ajout à été effectué et echec sinon 
+      voyageur ,le point de depart et celui de l'arrivé ,le id de bus , la matricule ,la capacité , le jour qui doit étre entre 1 et 31,le mois qui doit étre entre 1 et 12 et l'année de réservation et elle retourne succés si l'ajout à été effectué et echec sinon 
   ### b/fonction chercher_réservation:
       à partir de numéro de réservation ,elle verifie si il existe une réservation qui posséde ce numéro :si oui alors elle retourne le 
       nombre de voyageur et l'id de bus pour cette réservation sinon elle retourne "réservation non trouvable"
   ### c/fonction modifier_réservation:
       elle consiste à entrer le numéro de réservation qu'on veut modifier ses coordonnés , d'abord elle va chercher s'il existe une 
-      réservation avec ce numéro et elle va entrer les nouvelles coordonnés
+      réservation avec ce numéro et elle va entrer les nouvelles coordonnés avec le jour qui doit étre entre 1 et 31,le mois qui doit étre entre 1 et 12
   ### d/fonction supprimer_réservation:
       elle consiste à entrer le numéro de réservation qu'on veut la supprimer , d'abord elle va chercher s'il existe une réservation 
       avec ce numéro si oui elle va la supprimer
